@@ -11,23 +11,11 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="18"
-  DTS:VersionGUID="{8BAEF79F-893F-4BBC-85D4-1588DC1F1C8F}">
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{A2B918CF-3781-4B87-B4A2-C3FCC634B826}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[LENOVO\SQLEXPRESS.DW]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{C934D810-4FEA-4992-B521-FD05699AE23A}"
-      DTS:ObjectName="LENOVO\SQLEXPRESS.DW">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=LENOVO\SQLEXPRESS;Initial Catalog=DW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{C934D810-4FEA-4992-B521-FD05699AE23A}LENOVO\SQLEXPRESS.DW;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[MARYAM396.DW]"
       DTS:CreationName="OLEDB"
@@ -235,8 +223,8 @@ SET last_extract_date = (SELECT ISNULL(MAX(update_date), last_extract_date) FROM
               <connections>
                 <connection
                   refId="Package\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LENOVO\SQLEXPRESS.DW]"
-                  connectionManagerRefId="Package.ConnectionManagers[LENOVO\SQLEXPRESS.DW]"
+                  connectionManagerID="Package.ConnectionManagers[MARYAM396.DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[MARYAM396.DW]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -384,8 +372,8 @@ SET last_extract_date = (SELECT ISNULL(MAX(update_date), last_extract_date) FROM
               <connections>
                 <connection
                   refId="Package\Data Flow Task\OLE DB Source.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LENOVO\SQLEXPRESS.DW]"
-                  connectionManagerRefId="Package.ConnectionManagers[LENOVO\SQLEXPRESS.DW]"
+                  connectionManagerID="Package.ConnectionManagers[MARYAM396.DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[MARYAM396.DW]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -974,10 +962,6 @@ SET last_extract_date = (SELECT ISNULL(MAX(update_date), last_extract_date) FROM
           Id="Package\Data Flow Task"
           TopLeft="387.499978827934,139.533332363036" />
         <NodeLayout
-          Size="159.2,41.6"
-          Id="Package\Data Flow Task 1"
-          TopLeft="372.499979647498,220.133331802554" />
-        <NodeLayout
           Size="164.8,41.6"
           Id="Package\Execute SQL Task"
           TopLeft="375.833312798706,46.7999996745586" />
@@ -1012,40 +996,6 @@ SET last_extract_date = (SELECT ISNULL(MAX(update_date), last_extract_date) FROM
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="462.699978827934,181.133332363036">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-10.5999991804358,38.9999994395176"
-              Start="0,0"
-              End="-10.5999991804358,31.4999994395176">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,15.4999997197588" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,15.4999997197588"
-                    Point2="0,19.4999997197588"
-                    Point3="-4,19.4999997197588" />
-                  <mssgle:LineSegment
-                    End="-6.59999918043576,19.4999997197588" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-6.59999918043576,19.4999997197588"
-                    Point2="-10.5999991804358,19.4999997197588"
-                    Point3="-10.5999991804358,23.4999997197588" />
-                  <mssgle:LineSegment
-                    End="-10.5999991804358,31.4999994395176" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="251.933329053389,83.1999995660782">
           <EdgeLayout.Curve>
@@ -1071,6 +1021,44 @@ SET last_extract_date = (SELECT ISNULL(MAX(update_date), last_extract_date) FROM
                     Point3="65.9499918726587,-15.5999998915195" />
                   <mssgle:LineSegment
                     End="116.399983745317,-15.5999998915195" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="159.2,41.6"
+          Id="Package\Data Flow Task 1"
+          TopLeft="372.499979647498,220.133331802554" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="462.699978827934,181.133332363036">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-10.5999991804358,38.9999994395176"
+              Start="0,0"
+              End="-10.5999991804358,31.4999994395176">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.4999997197588" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.4999997197588"
+                    Point2="0,19.4999997197588"
+                    Point3="-4,19.4999997197588" />
+                  <mssgle:LineSegment
+                    End="-6.59999918043576,19.4999997197588" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-6.59999918043576,19.4999997197588"
+                    Point2="-10.5999991804358,19.4999997197588"
+                    Point3="-10.5999991804358,23.4999997197588" />
+                  <mssgle:LineSegment
+                    End="-10.5999991804358,31.4999994395176" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

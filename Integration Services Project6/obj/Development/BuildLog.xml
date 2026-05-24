@@ -2,7 +2,7 @@
 <BuildLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <ProjectInfo>
     <Name>e-commerce_dwh</Name>
-    <LastWriteTime>2025-05-06T18:49:50.8521342Z</LastWriteTime>
+    <LastWriteTime>2025-05-04T09:07:18.1911016Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
@@ -13,22 +13,22 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>STG_supplier.dtsx</Name>
-      <LastWriteTime>2025-05-06T18:49:50.8261383Z</LastWriteTime>
+      <LastWriteTime>2025-05-04T06:39:34.3743225Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>STG_campaign.dtsx</Name>
-      <LastWriteTime>2025-05-06T18:44:22.6242683Z</LastWriteTime>
+      <LastWriteTime>2025-05-04T06:50:19.0401632Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>STG_customer.dtsx</Name>
-      <LastWriteTime>2025-05-06T18:44:22.668268Z</LastWriteTime>
+      <LastWriteTime>2025-05-04T06:20:53.4721229Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>STG_F_sales.dtsx</Name>
-      <LastWriteTime>2025-05-06T12:59:24.0097625Z</LastWriteTime>
+      <LastWriteTime>2025-05-04T09:34:20.5099268Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -38,12 +38,37 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>STG_F_return.dtsx</Name>
-      <LastWriteTime>2025-05-06T18:44:22.679268Z</LastWriteTime>
+      <LastWriteTime>2025-05-04T09:47:29.5153724Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>STG_F_rating.dtsx</Name>
       <LastWriteTime>2025-05-04T09:00:33.2549513Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>DWH_F_sales.dtsx</Name>
+      <LastWriteTime>2025-05-04T08:56:27.2951874Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>DWH_F_ratings.dtsx</Name>
+      <LastWriteTime>2025-05-04T08:56:27.2795572Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>DWH_F_marketing_effectiveness.dtsx</Name>
+      <LastWriteTime>2025-05-03T11:33:20.2192917Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>DWH_F_returns.dtsx</Name>
+      <LastWriteTime>2025-05-03T11:34:05.5606418Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>DWH_dim_payment_method.dtsx</Name>
+      <LastWriteTime>2025-05-04T07:01:08.7279127Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

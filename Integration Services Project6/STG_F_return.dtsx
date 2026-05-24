@@ -11,23 +11,11 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="11"
-  DTS:VersionGUID="{AA6D6202-5579-456B-8B39-522E14909D00}">
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{EC0D172B-B871-488C-B0D7-AB5AA6C53F64}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[LENOVO\SQLEXPRESS.DW]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{46E89ED3-F878-4D77-9E37-9E5322271C17}"
-      DTS:ObjectName="LENOVO\SQLEXPRESS.DW">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=LENOVO\SQLEXPRESS;Initial Catalog=DW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{46E89ED3-F878-4D77-9E37-9E5322271C17}LENOVO\SQLEXPRESS.DW;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[MARYAM396.DW]"
       DTS:CreationName="OLEDB"
@@ -820,7 +808,7 @@ where [refTable].[product_id] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Data Flow Task 1\100:invalid};</property>
+                  name="ParameterMap">#{Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_id]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -847,7 +835,7 @@ where [refTable].[product_id] = ?</property>
                       refId="Package\Data Flow Task 1\Lookup 1.Inputs[Lookup Input].Columns[product_id]"
                       cachedDataType="i4"
                       cachedName="product_id"
-                      lineageId="Package\Data Flow Task 1\100:invalid">
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_id]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -1042,7 +1030,7 @@ where [refTable].[product_id] = ?</property>
                       cachedDataType="i4"
                       cachedName="order_id"
                       externalMetadataColumnId="Package\Data Flow Task 1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[order_key]"
-                      lineageId="Package\Data Flow Task 1\99:invalid" />
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[order_id]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1129,7 +1117,7 @@ where [refTable].[product_id] = ?</property>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[DWH].[F_returns]</property>
+                  name="OpenRowset">[STG].[F_returns]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -1164,8 +1152,8 @@ where [refTable].[product_id] = ?</property>
               <connections>
                 <connection
                   refId="Package\Data Flow Task 1\OLE DB Source.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LENOVO\SQLEXPRESS.DW]"
-                  connectionManagerRefId="Package.ConnectionManagers[LENOVO\SQLEXPRESS.DW]"
+                  connectionManagerID="Package.ConnectionManagers[MARYAM396.DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[MARYAM396.DW]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1182,6 +1170,24 @@ where [refTable].[product_id] = ?</property>
                       externalMetadataColumnId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[return_id]"
                       lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[return_id]"
                       name="return_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[order_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[order_id]"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[order_id]"
+                      name="order_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_id]"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_id]"
+                      name="product_id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[Return_date]"
@@ -1214,6 +1220,15 @@ where [refTable].[product_id] = ?</property>
                       scale="2"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
+                      refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[update_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[update_date]"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[update_date]"
+                      name="update_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
                       refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[create_timestamp]"
                       dataType="dbTimeStamp"
                       errorOrTruncationOperation="Conversion"
@@ -1222,42 +1237,6 @@ where [refTable].[product_id] = ?</property>
                       lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[create_timestamp]"
                       name="create_timestamp"
                       truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[return_key]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[return_key]"
-                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[return_key]"
-                      name="return_key"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[order_key]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[order_key]"
-                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[order_key]"
-                      name="order_key"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_key]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_key]"
-                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_key]"
-                      name="product_key"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[date_key]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[date_key]"
-                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[date_key]"
-                      name="date_key"
-                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1265,6 +1244,14 @@ where [refTable].[product_id] = ?</property>
                       refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[return_id]"
                       dataType="i4"
                       name="return_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[order_id]"
+                      dataType="i4"
+                      name="order_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_id]"
+                      dataType="i4"
+                      name="product_id" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Return_date]"
                       dataType="dbTimeStamp"
@@ -1281,25 +1268,13 @@ where [refTable].[product_id] = ?</property>
                       precision="10"
                       scale="2" />
                     <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[update_date]"
+                      dataType="dbTimeStamp"
+                      name="update_date" />
+                    <externalMetadataColumn
                       refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[create_timestamp]"
                       dataType="dbTimeStamp"
                       name="create_timestamp" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[return_key]"
-                      dataType="i4"
-                      name="return_key" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[order_key]"
-                      dataType="i4"
-                      name="order_key" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_key]"
-                      dataType="i4"
-                      name="product_key" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[date_key]"
-                      dataType="i4"
-                      name="date_key" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1308,30 +1283,20 @@ where [refTable].[product_id] = ?</property>
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[return_key]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[return_key]"
-                      name="return_key" />
-                    <outputColumn
                       refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[return_id]"
                       dataType="i4"
                       lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[return_id]"
                       name="return_id" />
                     <outputColumn
-                      refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[order_key]"
+                      refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[order_id]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[order_key]"
-                      name="order_key" />
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[order_id]"
+                      name="order_id" />
                     <outputColumn
-                      refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_key]"
+                      refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_id]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_key]"
-                      name="product_key" />
-                    <outputColumn
-                      refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[date_key]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[date_key]"
-                      name="date_key" />
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_id]"
+                      name="product_id" />
                     <outputColumn
                       refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Return_date]"
                       dataType="dbTimeStamp"
@@ -1350,6 +1315,11 @@ where [refTable].[product_id] = ?</property>
                       name="amount_refunded"
                       precision="10"
                       scale="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[update_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[update_date]"
+                      name="update_date" />
                     <outputColumn
                       refId="Package\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[create_timestamp]"
                       dataType="dbTimeStamp"
@@ -1502,17 +1472,13 @@ where [refTable].[product_id] = ?</property>
           Id="Package\Data Flow Task"
           TopLeft="369.166649774545,152.733332688477" />
         <NodeLayout
-          Size="159.2,41.6"
-          Id="Package\Data Flow Task 1"
-          TopLeft="541.666637071306,221.866665123833" />
-        <NodeLayout
           Size="164.8,41.6"
           Id="Package\Execute SQL Task"
           TopLeft="357.499983745317,60" />
         <NodeLayout
           Size="173.6,41.6"
           Id="Package\Execute SQL Task 1"
-          TopLeft="350.833317442901,304.399998300473" />
+          TopLeft="353.333317306307,273.199998517434" />
         <NodeLayout
           Size="173.6,41.6"
           Id="Package\Execute SQL Task 2"
@@ -1531,40 +1497,6 @@ where [refTable].[product_id] = ?</property>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,43.6333326884774" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="444.366649774545,194.333332688477">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="176.899987296761,27.5333324353564"
-              Start="0,0"
-              End="176.899987296761,20.0333324353564">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,9.76666621767819" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,9.76666621767819"
-                    Point2="0,13.7666662176782"
-                    Point3="4,13.7666662176782" />
-                  <mssgle:LineSegment
-                    End="172.899987296761,13.7666662176782" />
-                  <mssgle:CubicBezierSegment
-                    Point1="172.899987296761,13.7666662176782"
-                    Point2="176.899987296761,13.7666662176782"
-                    Point3="176.899987296761,17.7666662176782" />
-                  <mssgle:LineSegment
-                    End="176.899987296761,20.0333324353564" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1607,32 +1539,64 @@ where [refTable].[product_id] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="159.2,41.6"
+          Id="Package\Data Flow Task 1"
+          TopLeft="456.666641715501,201.066665268474" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="621.266637071306,263.466665123833">
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="519.566649774545,173.533332688477">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-183.633319628405,40.9333331766397"
+              EndConnector="16.6999919409562,27.5333325799972"
               Start="0,0"
-              End="-183.633319628405,33.4333331766397">
+              End="16.6999919409562,20.0333325799972">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.4666665883199" />
+                    End="12.6999919409562,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,16.4666665883199"
-                    Point2="0,20.4666665883199"
-                    Point3="-4,20.4666665883199" />
+                    Point1="12.6999919409562,0"
+                    Point2="16.6999919409562,0"
+                    Point3="16.6999919409562,4" />
                   <mssgle:LineSegment
-                    End="-179.633319628405,20.4666665883199" />
+                    End="16.6999919409562,20.0333325799972" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="536.266641715501,242.666665268474">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-96.1333244091943,30.5333332489599"
+              Start="0,0"
+              End="-96.1333244091943,23.0333332489599">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.2666666244799" />
                   <mssgle:CubicBezierSegment
-                    Point1="-179.633319628405,20.4666665883199"
-                    Point2="-183.633319628405,20.4666665883199"
-                    Point3="-183.633319628405,24.4666665883199" />
+                    Point1="0,11.2666666244799"
+                    Point2="0,15.2666666244799"
+                    Point3="-4,15.2666666244799" />
                   <mssgle:LineSegment
-                    End="-183.633319628405,33.4333331766397" />
+                    End="-92.1333244091943,15.2666666244799" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-92.1333244091943,15.2666666244799"
+                    Point2="-96.1333244091943,15.2666666244799"
+                    Point3="-96.1333244091943,19.2666666244799" />
+                  <mssgle:LineSegment
+                    End="-96.1333244091943,23.0333332489599" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1648,7 +1612,7 @@ where [refTable].[product_id] = ?</property>
     design-time-name="Package\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="171.2,41.6"
           Id="Package\Data Flow Task\OLE DB Destination"
@@ -1680,7 +1644,9 @@ where [refTable].[product_id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -1714,7 +1680,9 @@ where [refTable].[product_id] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -1747,21 +1715,39 @@ where [refTable].[product_id] = ?</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="120.8,41.6"
-          Id="Package\Data Flow Task 1\Lookup 1"
-          TopLeft="428.833313481676,224.099998897115" />
-        <NodeLayout
-          Size="171.2,41.6"
-          Id="Package\Data Flow Task 1\OLE DB Destination"
-          TopLeft="407.999982925754,312.099998571674" />
+          Size="152,41.6"
+          Id="Package\Data Flow Task 1\OLE DB Source"
+          TopLeft="367.166646906072,12.4333332851198" />
         <NodeLayout
           Size="112.8,41.6"
           Id="Package\Data Flow Task 1\Lookup"
           TopLeft="386.333314164646,129.099999349117" />
         <NodeLayout
-          Size="152,41.6"
-          Id="Package\Data Flow Task 1\OLE DB Source"
-          TopLeft="367.166646906072,12.4333332851198" />
+          Size="120.8,41.6"
+          Id="Package\Data Flow Task 1\Lookup 1"
+          TopLeft="428.833313481676,224.099998897115" />
+        <EdgeLayout
+          Id="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
+          TopLeft="442.949980535359,54.0333332851198">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,75.0666660639975"
+              Start="0,0"
+              End="0,67.5666660639975">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67.5666660639975" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task 1.Paths[Lookup Match Output]"
           TopLeft="442.733314164646,170.699999349117">
@@ -1794,32 +1780,14 @@ where [refTable].[product_id] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-33.810039403985,31.6999997739991,114.120078125,16"
+              BoundingBox="-24.941387060235,31.6999997739991,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task 1.Paths[OLE DB Source Output]"
-          TopLeft="442.949980535359,54.0333332851198">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,75.0666660639975"
-              Start="0,0"
-              End="0,67.5666660639975">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,67.5666660639975" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Data Flow Task 1\OLE DB Destination"
+          TopLeft="407.999982925754,312.099998571674" />
         <EdgeLayout
           Id="Package\Data Flow Task 1.Paths[Lookup Match Output1]"
           TopLeft="491.416648203715,265.699998897115">
@@ -1840,7 +1808,7 @@ where [refTable].[product_id] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-57.0600390625,11.4499998372793,114.120078125,16"
+              BoundingBox="-48.19138671875,13.6453123372793,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1848,30 +1816,7 @@ where [refTable].[product_id] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task 1\Lookup 1">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[DWH].[product_dim]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task 1\OLE DB Destination">
+    design-time-name="Package\Data Flow Task 1\OLE DB Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1889,7 +1834,7 @@ where [refTable].[product_id] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -1899,7 +1844,7 @@ where [refTable].[product_id] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1907,7 +1852,30 @@ where [refTable].[product_id] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task 1\OLE DB Source">
+    design-time-name="Package\Data Flow Task 1\Lookup 1">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[DWH].[product_dim]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task 1\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

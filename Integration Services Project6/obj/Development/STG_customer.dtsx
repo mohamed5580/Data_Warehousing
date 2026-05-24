@@ -11,23 +11,11 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="STG_customer"
   DTS:PackageType="5"
-  DTS:VersionBuild="14"
-  DTS:VersionGUID="{88F2B52D-6130-49F2-A4A2-CCA55283F5FB}">
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{D12CAFD8-2880-4DCE-B50B-551EC1E1788F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[LENOVO\SQLEXPRESS.DW]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{6CEEDA93-3347-4150-8626-EFCF2B89DCD8}"
-      DTS:ObjectName="LENOVO\SQLEXPRESS.DW">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=LENOVO\SQLEXPRESS;Initial Catalog=DW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-STG_customer-{6CEEDA93-3347-4150-8626-EFCF2B89DCD8}LENOVO\SQLEXPRESS.DW;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[MARYAM396.DW]"
       DTS:CreationName="OLEDB"
@@ -402,8 +390,8 @@ where [refTable].[customer_key] = ?</property>
               <connections>
                 <connection
                   refId="Package\Data Flow Task\Lookup.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LENOVO\SQLEXPRESS.DW]"
-                  connectionManagerRefId="Package.ConnectionManagers[LENOVO\SQLEXPRESS.DW]"
+                  connectionManagerID="Package.ConnectionManagers[MARYAM396.DW 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[MARYAM396.DW 1]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -550,8 +538,8 @@ where customer_key=?</property>
               <connections>
                 <connection
                   refId="Package\Data Flow Task\OLE DB Command.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LENOVO\SQLEXPRESS.DW]"
-                  connectionManagerRefId="Package.ConnectionManagers[LENOVO\SQLEXPRESS.DW]"
+                  connectionManagerID="Package.ConnectionManagers[MARYAM396.DW 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[MARYAM396.DW 1]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -677,8 +665,8 @@ where customer_key=?</property>
               <connections>
                 <connection
                   refId="Package\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LENOVO\SQLEXPRESS.DW]"
-                  connectionManagerRefId="Package.ConnectionManagers[LENOVO\SQLEXPRESS.DW]"
+                  connectionManagerID="Package.ConnectionManagers[MARYAM396.DW 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[MARYAM396.DW 1]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -837,7 +825,7 @@ where customer_key=?</property>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[customer]</property>
+                  name="OpenRowset">[STG].[customer]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -872,8 +860,8 @@ where customer_key=?</property>
               <connections>
                 <connection
                   refId="Package\Data Flow Task\OLE DB Source.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LENOVO\SQLEXPRESS.DW]"
-                  connectionManagerRefId="Package.ConnectionManagers[LENOVO\SQLEXPRESS.DW]"
+                  connectionManagerID="Package.ConnectionManagers[MARYAM396.DW 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[MARYAM396.DW 1]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -936,13 +924,22 @@ where customer_key=?</property>
                       name="country"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[last_update_date]"
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[update_date]"
                       dataType="dbTimeStamp"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[last_update_date]"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[last_update_date]"
-                      name="last_update_date"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[update_date]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[update_date]"
+                      name="update_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[create_timestamp]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[create_timestamp]"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[create_timestamp]"
+                      name="create_timestamp"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -976,9 +973,13 @@ where customer_key=?</property>
                       length="100"
                       name="country" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[last_update_date]"
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[update_date]"
                       dataType="dbTimeStamp"
-                      name="last_update_date" />
+                      name="update_date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[create_timestamp]"
+                      dataType="dbTimeStamp"
+                      name="create_timestamp" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1020,10 +1021,15 @@ where customer_key=?</property>
                       lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[country]"
                       name="country" />
                     <outputColumn
-                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[last_update_date]"
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[update_date]"
                       dataType="dbTimeStamp"
-                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[last_update_date]"
-                      name="last_update_date" />
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[update_date]"
+                      name="update_date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[create_timestamp]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[create_timestamp]"
+                      name="create_timestamp" />
                     <outputColumn
                       refId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -1130,7 +1136,7 @@ where customer_key=?</property>
                       refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[update_date]"
                       cachedDataType="dbTimeStamp"
                       cachedName="update_date"
-                      lineageId="Package\Data Flow Task\247:invalid">
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[update_date]">
                       <properties>
                         <property
                           containsID="true"
@@ -1143,7 +1149,7 @@ where customer_key=?</property>
                       refId="Package\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[create_timestamp]"
                       cachedDataType="dbTimeStamp"
                       cachedName="create_timestamp"
-                      lineageId="Package\Data Flow Task\248:invalid">
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[create_timestamp]">
                       <properties>
                         <property
                           containsID="true"
@@ -1237,7 +1243,7 @@ where customer_key=?</property>
                       refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[update_date]"
                       cachedDataType="dbTimeStamp"
                       cachedName="update_date"
-                      lineageId="Package\Data Flow Task\247:invalid">
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[update_date]">
                       <properties>
                         <property
                           containsID="true"
@@ -1250,7 +1256,7 @@ where customer_key=?</property>
                       refId="Package\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[create_timestamp]"
                       cachedDataType="dbTimeStamp"
                       cachedName="create_timestamp"
-                      lineageId="Package\Data Flow Task\248:invalid">
+                      lineageId="Package\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[create_timestamp]">
                       <properties>
                         <property
                           containsID="true"
@@ -1981,10 +1987,6 @@ where customer_key=?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="150.4,41.6"
-          Id="Package\Data Flow Task"
-          TopLeft="341.666647998824,289.466664653752" />
-        <NodeLayout
           Size="174.4,41.6"
           Id="Package\load last extract date"
           TopLeft="346.666651003891,140.599999439518" />
@@ -2035,28 +2037,6 @@ where customer_key=?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="415.699982652565,266.266665521595">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,23.1999991321566"
-              Start="0,0"
-              End="0,15.6999991321566">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,15.6999991321566" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="404.999984974663,92.9333333936002">
           <EdgeLayout.Curve>
@@ -2082,6 +2062,32 @@ where customer_key=?</property>
                     Point3="28.8666660292279,27.8333330229587" />
                   <mssgle:LineSegment
                     End="28.8666660292279,40.1666660459174" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Data Flow Task"
+          TopLeft="341.666647998824,289.466664653752" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="415.699982652565,266.266665521595">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,23.1999991321566"
+              Start="0,0"
+              End="0,15.6999991321566">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.6999991321566" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2127,6 +2133,107 @@ where customer_key=?</property>
       </GraphLayout>
     </LayoutInfo>
   </Package>
+  <TaskHost
+    design-time-name="Package\load STG">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\load STG\OLE DB Destination"
+          TopLeft="429.999976505837,221.866665123833" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\load STG\Derived Column"
+          TopLeft="424.166643491223,133.466665738556" />
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\load STG\OLE DB Source"
+          TopLeft="418.333310476609,43.3333330319987" />
+        <EdgeLayout
+          Id="Package\load STG.Paths[OLE DB Source Output]"
+          TopLeft="497.449976983916,84.9333330319988">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48.5333327065574"
+              Start="0,0"
+              End="0,41.0333327065574">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.0333327065574" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\load STG.Paths[Derived Column Output]"
+          TopLeft="500.566643491223,175.066665738556">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="15.0333330146141,46.799999385277"
+              Start="0,0"
+              End="15.0333330146141,39.299999385277">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.3999996926385" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.3999996926385"
+                    Point2="0,23.3999996926385"
+                    Point3="4,23.3999996926385" />
+                  <mssgle:LineSegment
+                    End="11.0333330146141,23.3999996926385" />
+                  <mssgle:CubicBezierSegment
+                    Point1="11.0333330146141,23.3999996926385"
+                    Point2="15.0333330146141,23.3999996926385"
+                    Point3="15.0333330146141,27.3999996926385" />
+                  <mssgle:LineSegment
+                    End="15.0333330146141,39.299999385277" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\load STG\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\load STG\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Data Flow Task">
     <LayoutInfo>
@@ -2192,7 +2299,7 @@ where customer_key=?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-59.7083698916105,117.682435988334,129.350078125,16"
+              BoundingBox="-50.8397175478605,117.682435988334,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -2389,9 +2496,7 @@ where customer_key=?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-44.4999955834615,28.5263160178535,16,16"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2405,32 +2510,6 @@ where customer_key=?</property>
         <Value
           type="q2:boolean">false</Value>
       </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
@@ -2443,107 +2522,6 @@ where customer_key=?</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\load STG">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="171.2,41.6"
-          Id="Package\load STG\OLE DB Destination"
-          TopLeft="429.999976505837,221.866665123833" />
-        <NodeLayout
-          Size="152.8,41.6"
-          Id="Package\load STG\Derived Column"
-          TopLeft="424.166643491223,133.466665738556" />
-        <NodeLayout
-          Size="152,41.6"
-          Id="Package\load STG\OLE DB Source"
-          TopLeft="418.333310476609,43.3333330319987" />
-        <EdgeLayout
-          Id="Package\load STG.Paths[OLE DB Source Output]"
-          TopLeft="497.449976983916,84.9333330319988">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,48.5333327065574"
-              Start="0,0"
-              End="0,41.0333327065574">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,41.0333327065574" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\load STG.Paths[Derived Column Output]"
-          TopLeft="500.566643491223,175.066665738556">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="15.0333330146141,46.799999385277"
-              Start="0,0"
-              End="15.0333330146141,39.299999385277">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,19.3999996926385" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,19.3999996926385"
-                    Point2="0,23.3999996926385"
-                    Point3="4,23.3999996926385" />
-                  <mssgle:LineSegment
-                    End="11.0333330146141,23.3999996926385" />
-                  <mssgle:CubicBezierSegment
-                    Point1="11.0333330146141,23.3999996926385"
-                    Point2="15.0333330146141,23.3999996926385"
-                    Point3="15.0333330146141,27.3999996926385" />
-                  <mssgle:LineSegment
-                    End="15.0333330146141,39.299999385277" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\load STG\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\load STG\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
